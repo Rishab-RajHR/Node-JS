@@ -1,0 +1,23 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "package file",
+  "keywords": [
+    "Rishab"
+  ],
+  "homepage": "https://github.com/Rishab-RajHR/Node-JS#readme",
+  "bugs": {
+    "url": "https://github.com/Rishab-RajHR/Node-JS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rishab-RajHR/Node-JS.git"
+  },
+  "license": "ISC",
+  "author": "Rishab Raj",
+  "type": "commonjs",
+  "main": "coreModules.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
