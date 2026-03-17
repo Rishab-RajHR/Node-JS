@@ -3,7 +3,15 @@ const express = require('express');
 const app = express();
 
 app.get('', (req, res) => {
-     res.send("Routing Parameters in Express JS")
+    
+    //  res.send("Routing Parameters in Express JS")
+    const name = req.query.name;
+    if (name) {
+       res.send(`Welcome ${name}`)
+    }
+    else {
+       res.send("Routing Paramters in Express JS")
+    }
 })
 
 app.listen(2000, () => {
