@@ -8,12 +8,38 @@ connectDB();
 
 const getEmployees = async () => {
     const employees = await Employee.find();
-    console.log("Employees Data Before Update: ", employees);
+    console.log("Employees Data : ", employees);
 }
 
+
 const updateEmployee = async (id, updatedData) => {
-    const result = await Employee.updateOne({ _id: id}, {$set: updateData});
+    const result = await Employee.updateOne({ _id: id}, {$set: updatedData});
     console.log(
-        result.nModified === 0 ? `No updates for employee ${id} ` : `Updated Employee Data: ${result}`
+        result.nModified === 0 ? `No updates for employee ${id} ` : 'Updated Employee Data: ' ,result
     )
 }
+
+const deleteEmployee = async (id) => {
+    await Employee.findByIdAndDelete(id);
+    console.log(`Employee ${id} deleted`)
+}
+
+
+const main = async () => {
+    await getEmployees();
+
+    const employeeID = '69c38fd0605542152c32c642';
+    const updatedData = {
+       position : 'Senior SE',
+       department : "DEV"
+    };
+
+    await updateEmployee(employeeID, updatedData);
+    await getEmployees();
+
+    await deleteEmployee(employeeID);
+    await getEmployees();
+}
+main();
+
+app.listen(2000);
