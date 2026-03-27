@@ -1,0 +1,23 @@
+const express = require('express');
+const connectDB = require('./db/db_connection');
+const Employee = require('./models/employeeModel');
+
+
+const app = express();
+
+connectDB();
+
+app.get('/employees', async (req, res) => {
+    try {
+        const employees = await Employees.find();
+        res.json(employees);
+
+    } catch (error) {
+        console.error("Error fetching Employees Data: ", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+app.listen(2000, () => {
+    console.log("Server is running on port no 2000");
+})
