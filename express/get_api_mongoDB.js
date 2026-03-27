@@ -5,15 +5,31 @@ const Employee = require('./models/employeeModel');
 
 const app = express();
 
+app.use(express.json());
+
 connectDB();
 
 app.get('/employees', async (req, res) => {
     try {
-        const employees = await Employees.find();
+        const employees = await Employee.find();
         res.json(employees);
 
     } catch (error) {
         console.error("Error fetching Employees Data: ", error);
+        res.status(500).send("Server Error");
+    }
+})
+
+app.get('/employees/:id', async (req, res) => {
+     try {
+        const employee = await Employee.findById(req.params.id);
+        if(!employee) {
+            return res.status(404).join({ msg : "Employee Not Found"})
+        }
+        res.json(employee)
+
+     } catch (error) {
+          console.error("Error fetching Employees Data: ", error);
         res.status(500).send("Server Error");
     }
 })
