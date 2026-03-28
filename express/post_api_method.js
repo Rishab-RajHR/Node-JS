@@ -6,6 +6,8 @@ const app = express();
 
 connectDB();
 
+app.use(express.json());  // Convert the JSON into JavaScript Object
+
 app.post('/employees', async (req,res) => {
      try {
         const { name, email, position, department } = req.body;
@@ -26,5 +28,5 @@ app.post('/employees', async (req,res) => {
 });
 
 app.listen(2000, () => {
-    console.log("Server is running on port no 2000")
+    console.log("Server is running on port no 2000");
 })
