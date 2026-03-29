@@ -18,5 +18,7 @@ route.get('/about', (req, res) => {
 route.get('/contact', (req, res) => {
     res.send("This is our Contact Page")
 })
+
 app.use('/', route);
+
 app.listen(2000);
