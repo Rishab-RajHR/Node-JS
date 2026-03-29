@@ -11,7 +11,7 @@ app.use(express.json());
 app.put('/employees/:id', async (req, res) => {
     try {
         const employeeId = req.params.id;
-        const {name, email, postition, department } = req.body;
+        const {name, email, position, department } = req.body;
         const updateEmployee = await Employee.findByIdAndUpdate(employeeId, 
           { name, email, position, department },
           { new : true}
