@@ -9,7 +9,10 @@ app.get('/search-emp/:value', async(req,res) => {
      let searchValue = req.params.value;
      let result = await Employee.find({
         "$or" : [
-            {"name" : {$regex : searchValue}}
+            {"name" : {$regex : searchValue, $options : "i"}},
+            {"email" : {$regex : searchValue, $options : "i"}},
+            {"position" : {$regex : searchValue, $options : "i"}},
+            {"department" : {$regex : searchValue, $options : "i"}},
         ]
      });
      res.send(result);
