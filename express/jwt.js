@@ -14,7 +14,7 @@ app.post('/login', (req, res) => {
 })
 
 const verifyToken = (req, res, next) => {
-     const bearerHeader = req.header['authorization'];
+     const bearerHeader = req.headers['authorization'];
      if(bearerHeader) {
         const token = bearerHeader.split("")[1];
         req.token = token;
